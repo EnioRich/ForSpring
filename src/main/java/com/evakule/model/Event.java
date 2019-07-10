@@ -37,6 +37,38 @@ public class Event {
         this.id = id;
     }
 
+    public String getEventName() {
+        return eventName;
+    }
+
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public EventStatus getEventStatus() {
+        return eventStatus;
+    }
+
+    public void setEventStatus(EventStatus eventStatus) {
+        this.eventStatus = eventStatus;
+    }
+
+    public List<UserToEvent> getUserToEvent() {
+        return userToEvent;
+    }
+
+    public void setUserToEvent(List<UserToEvent> userToEvent) {
+        this.userToEvent = userToEvent;
+    }
+
     @Override
     public String toString() {
         return "Event: " +

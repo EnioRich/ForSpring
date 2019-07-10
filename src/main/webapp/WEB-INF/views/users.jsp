@@ -19,7 +19,8 @@
     <h4>Last name: <c:out value="${u.email}"/></h4>
     <h4>Events: <c:out value="${u.events}"/></h4>
     <a href="<c:url value="/delete-user?u_id=${u.id}"/>">Delete</a>
-    <a href="<c:url value="/edit-user?u_id=${u.id}"/>">Edit</a>
+    <a href="<c:url value="/edit-user?u_id=${u.id}"/>">Edit User</a>
+    <a href="<c:url value="/edit-event?u_id=${u.id}"/>">Edit Event</a>
     <h4>___________________________________________________</h4>
 
 </c:forEach>

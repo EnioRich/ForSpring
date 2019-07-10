@@ -21,6 +21,9 @@ public class EventStatus {
     @OneToMany(mappedBy = "eventStatus", fetch = FetchType.EAGER)
     private List<UserToEvent> userToEvent;
 
+    public EventStatus() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -35,6 +38,22 @@ public class EventStatus {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    public List<UserToEvent> getUserToEvent() {
+        return userToEvent;
+    }
+
+    public void setUserToEvent(List<UserToEvent> userToEvent) {
+        this.userToEvent = userToEvent;
     }
 
     @Override

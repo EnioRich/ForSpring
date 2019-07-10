@@ -1,8 +1,6 @@
 package com.evakule.controller;
 
-import com.evakule.dao.UserToEventDao;
 import com.evakule.model.User;
-import com.evakule.model.UserToEvent;
 import com.evakule.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,9 +15,6 @@ public class UserController {
 
     @Autowired
     UserService userService;
-
-    @Autowired
-    UserToEventDao userToEventDao;
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public ModelAndView getAll() {
@@ -59,17 +54,6 @@ public class UserController {
         ModelAndView mw = new ModelAndView();
         mw.addObject("user", user);
         mw.setViewName("edit-user");
-        return mw;
-    }
-
-    //TODO ServiceImplementation
-    @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public ModelAndView main() {
-        List<UserToEvent> userList = userToEventDao.findAll();
-
-        ModelAndView mw = new ModelAndView();
-        mw.addObject("list", userList);
-        mw.setViewName("main");
         return mw;
     }
 

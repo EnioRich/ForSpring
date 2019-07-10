@@ -2,6 +2,7 @@ package com.evakule.model;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "USERS")
@@ -19,12 +20,12 @@ public class User {
     private String email;
     @Column(name = "PASSWORD")
     private String password;
-    @ManyToMany(cascade = CascadeType.DETACH)
+    @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinTable(name = "EVENTS_ALL",
             joinColumns = @JoinColumn(name = "FK_USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "FK_EVENT_ID")
     )
-    private List<Event> events;
+    private Set<Event> events;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<UserToEvent> userToEvent;
@@ -64,19 +65,34 @@ public class User {
         this.email = email;
     }
 
-    public List<Event> getEvents() {
+    public Set<Event> getEvents() {
         return events;
     }
 
-    public void setEvents(List<Event> events) {
+    public void setEvents(Set<Event> events) {
         this.events = events;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<UserToEvent> getUserToEvent() {
+        return userToEvent;
+    }
+
+    public void setUserToEvent(List<UserToEvent> userToEvent) {
+        this.userToEvent = userToEvent;
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+        return "User: " +
+                "firstName - " + firstName +
+                ", lastName - " + lastName;
     }
 }

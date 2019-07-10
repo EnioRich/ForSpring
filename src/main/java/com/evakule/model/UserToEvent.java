@@ -28,6 +28,9 @@ public class UserToEvent {
     @JoinColumn(name = "FK_EVENT_STATUS_ID")
     private EventStatus eventStatus;
 
+    public UserToEvent() {
+    }
+
     public Long getId() {
         return id;
     }
