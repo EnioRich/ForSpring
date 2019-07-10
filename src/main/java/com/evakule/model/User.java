@@ -20,13 +20,14 @@ public class User {
     @Column(name = "PASSWORD")
     private String password;
     @ManyToMany(cascade = CascadeType.DETACH)
-    @JoinTable(name = "USERS_TO_EVENTS",
+    @JoinTable(name = "EVENTS_ALL",
             joinColumns = @JoinColumn(name = "FK_USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "FK_EVENT_ID")
     )
     private List<Event> events;
-//    @JoinColumn(name = "FK_STATUS_ID")
-//    private Long statusId;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private List<UserToEvent> userToEvent;
 
     public User() {
     }
@@ -63,19 +64,19 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public List<Event> getEvents() {
         return events;
     }
 
     public void setEvents(List<Event> events) {
         this.events = events;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }
